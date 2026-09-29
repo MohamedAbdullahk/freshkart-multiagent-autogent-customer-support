@@ -1,0 +1,84 @@
+{
+  "orders": {
+    "FK1023": {
+      "customer_name": "Priya",
+      "phone_masked": "98XXXXXX21",
+      "items": ["Aavin Milk 1L x2", "Ponni Rice 5kg", "Tomato 1kg"],
+      "total_amount": 850,
+      "order_status": "PAYMENT_FAILED",
+      "created_at": "2026-09-28 19:42"
+    },
+    "FK1024": {
+      "customer_name": "Karthik",
+      "phone_masked": "97XXXXXX45",
+      "items": ["Sunflower Oil 1L", "Toor Dal 1kg"],
+      "total_amount": 420,
+      "order_status": "DELIVERED",
+      "created_at": "2026-09-27 10:15"
+    },
+    "FK1025": {
+      "customer_name": "Fathima",
+      "phone_masked": "99XXXXXX08",
+      "items": ["Eggs 12 pcs", "Bread"],
+      "total_amount": 150,
+      "order_status": "OUT_FOR_DELIVERY",
+      "created_at": "2026-09-29 08:30"
+    }
+  },
+
+  "payments": {
+    "FK1023": [
+      {"txn_id": "TXN-88121", "amount": 850, "status": "SUCCESS", "method": "UPI", "time": "2026-09-28 19:43:10"},
+      {"txn_id": "TXN-88122", "amount": 850, "status": "SUCCESS", "method": "UPI", "time": "2026-09-28 19:43:55"}
+    ],
+    "FK1024": [
+      {"txn_id": "TXN-87990", "amount": 420, "status": "SUCCESS", "method": "CARD", "time": "2026-09-27 10:16:02"}
+    ],
+    "FK1025": [
+      {"txn_id": "TXN-88301", "amount": 150, "status": "SUCCESS", "method": "UPI", "time": "2026-09-29 08:31:20"}
+    ]
+  },
+
+  "deliveries": {
+    "FK1023": {
+      "status": "NOT_DISPATCHED",
+      "last_update": "Order is on hold because the payment shows as failed."
+    },
+    "FK1024": {
+      "status": "DELIVERED",
+      "last_update": "Delivered on 2026-09-27 at 11:02 AM."
+    },
+    "FK1025": {
+      "status": "OUT_FOR_DELIVERY",
+      "partner_name": "Suresh",
+      "promised_by": "2026-09-29 09:30",
+      "eta": "2026-09-29 10:45",
+      "last_update": "Picked up from the Velachery store at 09:50 AM.",
+      "delay_reason": "Heavy rain and traffic on OMR road."
+    }
+  },
+
+  "system_status": {
+    "otp_service": {
+      "status": "DEGRADED",
+      "note": "SMS provider delay of 3-5 minutes since 09:00 AM today. Engineering team is working on it."
+    },
+    "payment_gateway": {
+      "status": "RECOVERED",
+      "note": "Gateway timeouts on 2026-09-28 between 19:30 and 20:00 caused some orders to show PAYMENT_FAILED even after successful debit."
+    }
+  },
+
+  "store_info": {
+    "delivery_hours": "Monday to Sunday, 7:00 AM to 11:00 PM (including Sundays and holidays)",
+    "support_hours": "Monday to Sunday, 8:00 AM to 10:00 PM",
+    "service_area": "Chennai city limits"
+  },
+
+  "policies": {
+    "duplicate_charge": "If a customer is debited more than once for the same order, the extra amount is automatically refunded to the original payment method within 5-7 working days.",
+    "failed_order_refund": "If an order shows PAYMENT_FAILED but money was debited, the full amount is refunded within 5-7 working days, or the customer can ask us to confirm the order instead.",
+    "late_delivery": "If an order arrives more than 60 minutes after the promised time, the customer receives a Rs. 50 FreshKart credit, added automatically after delivery.",
+    "privacy": "Never ask customers for full card number, CVV, UPI PIN, or OTP. Only use masked phone numbers. Never share the delivery partner's phone number."
+  }
+}
